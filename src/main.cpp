@@ -4,12 +4,13 @@
 #include "header.h"
 #include "czas.h"
 #include "scalanie.h"
+#include "kopcowanie.h"
 #include "funkcjePomocnicze.h"
 
 using namespace std;
 
 
-int chujnia[8]= { 1, 6, 7, 8, 2, 3, 4, 5};
+int chujnia[8]=  {1, 6, 7, 8, 2, 3, 4, 5};
 int chujowka[8]= {5, 4, 3, 2, 8, 7, 6, 1};
 
 ulong wykonajTesty( ulong rozmiar, int tysieczne, char kolejnosc);
@@ -18,6 +19,24 @@ int main(void){
     int promil;
     string nazwa;
     char k= 'r';
+
+    /* OBSZAR TESTOWY */
+    for(ulong i= 0; i < 8; i++)
+	cout << chujnia[i] << '\n';
+	
+    kopcowanie(chujnia, 8, 'r');
+    
+    cout << '\n';
+    for(ulong i= 0; i < 8; i++)
+	cout << chujnia[i] << '\n';
+
+
+
+
+
+    
+    return 0;
+    /* OBSZAR PROGRAMU */
 
     cout << "Jaki promil posortowany?: ";
     cin >> promil;

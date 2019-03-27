@@ -18,5 +18,7 @@ unsigned long obliczCzas(czas start, czas stop, char jednostka){
     default:
 	return 0;
     }
+
+    return 0;
 }
 
