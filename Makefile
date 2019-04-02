@@ -6,11 +6,14 @@ CPPFLAGS= -c -g -Iinc -Wall -pedantic
 # __start__: uklad_rownan
 	# ./uklad_rownan
 
-sortowanie: obj/main.o obj/scalanie.o  obj/czas.o obj/funkcjePomocnicze.o obj/kopcowanie.o
-	g++ -Wall -pedantic -o sortowanie obj/main.o obj/scalanie.o obj/czas.o obj/funkcjePomocnicze.o obj/kopcowanie.o
+sortowanie: obj/main.o obj/scalanie.o  obj/czas.o obj/funkcjePomocnicze.o obj/kopcowanie.o obj/qsort.o
+	g++ -Wall -pedantic -o sortowanie obj/main.o obj/scalanie.o obj/czas.o obj/funkcjePomocnicze.o obj/kopcowanie.o obj/qsort.o
 
-obj/main.o: src/main.cpp inc/header.h
+obj/main.o: src/main.cpp
 	g++ ${CPPFLAGS} -Wall -pedantic -o obj/main.o src/main.cpp
+
+obj/qsort.o: src/qsort.cpp
+	g++ ${CPPFLAGS} -Wall -pedantic -o obj/qsort.o src/qsort.cpp
 
 obj/kopcowanie.o: src/kopcowanie.cpp inc/kopcowanie.h
 	g++ ${CPPFLAGS} -Wall -pedantic -o obj/kopcowanie.o src/kopcowanie.cpp
@@ -27,4 +30,4 @@ obj/czas.o: src/czas.cpp inc/czas.h
 
 
 clean:
-	rm -f obj/*.o uklad_rownan
+	rm -f obj/*.o sortowanie

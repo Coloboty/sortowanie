@@ -3,9 +3,9 @@
 
 typedef unsigned long ulong;
 
-int kopcowanie( int *tab, ulong rozmiar, char kolejnosc);
-int tworzKopiecRosnacy( int *tab, ulong rozmiar, ulong korzen);
-int tworzKopiecMalejacy( int *tab, ulong rozmiar, ulong korzen);
+int sortowanieKopcowaniem( int *tab, ulong rozmiar, char kolejnosc);
+void tworzKopiecRosnacy( int *tab, ulong rozmiar, ulong korzen);
+void tworzKopiecMalejacy( int *tab, ulong rozmiar, ulong korzen);
 void zamien( int& jeden, int& dwa);
 
 #endif

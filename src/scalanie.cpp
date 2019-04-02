@@ -4,8 +4,39 @@
 
 using namespace std;
 
+/* Sprawdza poprawność argumentu kolejność i wywołuję właściwą funkcję sortującą */
+int sortowanieScalaniem(int *tab, ulong rozmiar, char kolejnosc){
+    /* Zwróć błąd, jeżeli podano nieprawidłowy argument */
+    if(kolejnosc != 'r' && kolejnosc != 'm')
+	return 1;
 
-int scalanieMalejaco( int *tab, ulong lewo, ulong srodek, ulong prawo){
+    scalanieRekurencyjne(tab, 0, rozmiar - 1, kolejnosc);
+    
+    return 0;
+}
+
+/* Wraz z wybraną f. scalającą realizuje algorymt sortowania scalaniem */
+void scalanieRekurencyjne( int *tab, ulong lewo, ulong prawo, char kolejnosc){
+    ulong srodek;
+    
+    /* Znajdź środek i podziel na dwie połowy */
+    /* Środkowy indeks jest częścią 'lewej' połowy */
+    if(lewo < prawo){
+	srodek= (lewo+prawo)/2;
+		
+	scalanieRekurencyjne(tab, lewo, srodek, kolejnosc);
+	scalanieRekurencyjne(tab, srodek+1, prawo, kolejnosc);
+	if(kolejnosc == 'r')
+	    scalanieRosnaco(tab, lewo, srodek, prawo);
+	else
+	    scalanieMalejaco(tab, lewo, srodek, prawo);
+    }
+    
+    return;
+}
+
+/* Scala dwie podtablice do tablicy właściwej, w kolejności malejącej */
+void scalanieMalejaco( int *tab, ulong lewo, ulong srodek, ulong prawo){
     ulong l_ind, p_ind;
     int *l_temp, *p_temp;
 
@@ -58,10 +89,12 @@ int scalanieMalejaco( int *tab, ulong lewo, ulong srodek, ulong prawo){
 
     free(l_temp);
     free(p_temp);
-    return 0;
+    
+    return;
 }
 
-int scalanieRosnaco( int *tab, ulong lewo, ulong srodek, ulong prawo){
+/* To samo, tylko w kolejności rosnącej */
+void scalanieRosnaco( int *tab, ulong lewo, ulong srodek, ulong prawo){
     ulong l_ind, p_ind;
     int *l_temp, *p_temp;
 
@@ -114,33 +147,6 @@ int scalanieRosnaco( int *tab, ulong lewo, ulong srodek, ulong prawo){
 
     free(l_temp);
     free(p_temp);
-    return 0;
-}
-
-
-int sortowanieScalanie( int *tab, ulong lewo, ulong prawo, char kolejnosc){
-    int srodek;
     
-    /* Zwróć błąd jeśli indeksy są nieprawidłowe */
-    if(lewo<0 || prawo<0 || prawo<lewo)
-	return 1;
-
-    /* Zwróć błąd, jeżeli podano nieprawidłowy argument */
-    if(kolejnosc != 'r' && kolejnosc != 'm')
-	return 1;
-    
-    /* Znajdź środek i podziel na dwie połowy */
-    /* Środkowy indeks jest częścią 'lewej' połowy */
-    if(lewo < prawo){
-	srodek= (lewo+prawo)/2;
-		
-	sortowanieScalanie(tab, lewo, srodek, kolejnosc);
-	sortowanieScalanie(tab, srodek+1, prawo, kolejnosc);
-	if(kolejnosc == 'r')
-	    scalanieRosnaco(tab, lewo, srodek, prawo);
-	else
-	    scalanieMalejaco(tab, lewo, srodek, prawo);
-    }
-    
-    return 0;
+    return;
 }

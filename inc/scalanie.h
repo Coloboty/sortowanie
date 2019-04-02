@@ -5,8 +5,9 @@
 typedef unsigned long ulong;
 
 
-int scalanieMalejaco( int *tab, ulong lewo, ulong srodek, ulong prawo);
-int scalanieRosnaco( int *tab, ulong lewo, ulong srodek, ulong prawo);
-int sortowanieScalanie( int *tab, ulong lewo, ulong prawo, char kolejnosc);
+void scalanieMalejaco( int *tab, ulong lewo, ulong srodek, ulong prawo);
+void scalanieRosnaco( int *tab, ulong lewo, ulong srodek, ulong prawo);
+void scalanieRekurencyjne( int *tab, ulong lewo, ulong prawo, char kolejnosc);
+int sortowanieScalaniem( int *tab, ulong rozmiar, char kolejnosc);
 
 #endif
